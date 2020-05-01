@@ -1,5 +1,6 @@
 package com.szl.lucky.web;
 
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +27,7 @@ import java.util.stream.Stream;
 @SpringBootApplication(scanBasePackages = "com.szl")
 @ComponentScan("com.szl.lucky")
 @MapperScan("com.szl.lucky.dao")
+@NacosPropertySource(dataId = "lucky", autoRefreshed = true)
 public class LuckyWebApplication {
     public static void main(String[] args) {
 
