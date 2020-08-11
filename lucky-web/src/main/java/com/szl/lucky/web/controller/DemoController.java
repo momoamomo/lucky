@@ -17,7 +17,7 @@ public class DemoController {
     @Autowired
     UserService userService;
 
-    @NacosValue(value = "${tvName:null}", autoRefreshed = true)
+    @NacosValue(value = "${tvName:hahaha}", autoRefreshed = true)
     private String tvName;
 
     @GetMapping("/test")

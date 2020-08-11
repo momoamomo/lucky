@@ -4,6 +4,8 @@ import com.szl.lucky.dao.entity.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface SysUserMapper {
     int deleteByPrimaryKey(Long id);
@@ -20,4 +22,15 @@ public interface SysUserMapper {
 
     //以上为自动生成
     SysUser selectOne(SysUser record);
+
+    /**
+     * 根据条件查询sysUser
+     *
+     * @param userId
+     * @param userName
+     * @param userPhone
+     * @return
+     */
+    List<SysUser> selectByConditon(String userId, String userName, String userPhone);
+
 }

@@ -3,12 +3,10 @@ package com.szl.lucky.web.service.impl;
         import base.LuckyResult;
         import com.szl.lucky.dao.entity.SysUser;
         import com.szl.lucky.dao.mapper.SysUserMapper;
-        import com.szl.lucky.web.Enum.ErrorTextEnum;
+        import com.szl.lucky.web.enums.ErrorTextEnum;
         import com.szl.lucky.web.service.LoginService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Service;
-
-        import javax.xml.transform.Result;
 
 /**
  * @author sunzhilin

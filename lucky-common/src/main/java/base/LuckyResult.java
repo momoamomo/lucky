@@ -11,7 +11,7 @@ import lombok.Data;
  * @date 2020/3/25  10:31
  */
 @Data
-public class LuckyResult {
+public class LuckyResult<T> {
 
     private Boolean success;
 
@@ -19,7 +19,8 @@ public class LuckyResult {
 
     private String message;
 
-    private Map<String, Object> data = new HashMap<>();
+    T data;
+//    private Map<String, Object> data = new HashMap<>();
 
     //构造器私有
     private LuckyResult(){
@@ -32,6 +33,15 @@ public class LuckyResult {
         result.setSuccess(ResultCodeEnum.SUCCESS.getSuccess());
         result.setCode(ResultCodeEnum.SUCCESS.getCode());
         result.setMessage(ResultCodeEnum.SUCCESS.getMessage());
+        return result;
+    }
+
+    public static <T> LuckyResult<T> ok(T data){
+        LuckyResult<T> result = new LuckyResult();
+        result.setSuccess(ResultCodeEnum.SUCCESS.getSuccess());
+        result.setCode(ResultCodeEnum.SUCCESS.getCode());
+        result.setMessage(ResultCodeEnum.SUCCESS.getMessage());
+        result.setData(data);
         return result;
     }
 
@@ -53,7 +63,7 @@ public class LuckyResult {
     }
 
     //链式编程，返回类本身
-    //自定义返回数据
+    /*//自定义返回数据
     public LuckyResult data(Map<String, Object> map){
         this.setData(map);
         return this;
@@ -63,7 +73,7 @@ public class LuckyResult {
     public LuckyResult data(String key, Object value){
         this.data.put(key, value);
         return this;
-    }
+    }*/
 
     //自定义返回结果
     public LuckyResult success(Boolean success){

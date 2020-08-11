@@ -1,4 +1,4 @@
-package com.szl.lucky.web.Enum;
+package com.szl.lucky.web.enums;
 
 /**
  * @author sunzhilin
