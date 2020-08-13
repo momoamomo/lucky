@@ -33,4 +33,28 @@ public interface SysUserMapper {
      */
     List<SysUser> selectByConditon(String userId, String userName, String userPhone);
 
+    /**
+     * selectBySysUserId
+     *
+     * @param userId
+     * @return
+     */
+    SysUser selectBySysUserId(@Param("userId") String userId);
+
+
+    /**
+     * selectByPhone
+     *
+     * @param userPhone
+     * @return
+     */
+    SysUser selectByPhone(@Param("userPhone") String userPhone);
+
+    /**
+     * 查找最大的userId
+     *
+     * @return
+     */
+    String selectLastId();
+
 }

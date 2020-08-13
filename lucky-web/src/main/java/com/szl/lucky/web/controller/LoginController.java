@@ -32,6 +32,7 @@ public class LoginController {
     public LuckyResult register(@RequestParam("userName") String userName,
                                 @RequestParam("password") String password,
                                 @RequestParam("rePassword") String rePassword){
+        //TODO：具体实现servicer逻辑还没写
         return LuckyResult.ok();
 
     }

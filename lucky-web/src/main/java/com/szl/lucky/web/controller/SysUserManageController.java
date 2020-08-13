@@ -4,10 +4,13 @@ import base.LuckyResult;
 import com.github.pagehelper.PageInfo;
 import com.szl.lucky.web.dto.SysUserQueryReqDto;
 import com.szl.lucky.web.dto.SysUserQueryRespDto;
+import com.szl.lucky.web.dto.SysUserSaveDto;
 import com.szl.lucky.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -38,6 +41,12 @@ public class SysUserManageController {
     public LuckyResult querySysUserInfo(SysUserQueryReqDto sysUserQueryReqDto){
         PageInfo<SysUserQueryRespDto> users = userService.getUsers(sysUserQueryReqDto);
         return LuckyResult.ok(users);
+    }
+
+    @RequestMapping(value="save",method = RequestMethod.POST)
+    public LuckyResult saveSysUser(SysUserSaveDto saveDto){
+        userService.saveUser(saveDto);
+        return LuckyResult.ok();
     }
 
 }

@@ -4,6 +4,7 @@ package com.szl.lucky.web.service.impl;
         import com.szl.lucky.dao.entity.SysUser;
         import com.szl.lucky.dao.mapper.SysUserMapper;
         import com.szl.lucky.web.enums.ErrorTextEnum;
+        import com.szl.lucky.web.enums.LuckyWebErrorEnum;
         import com.szl.lucky.web.service.LoginService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public class LoginServiceImpl implements LoginService {
         if(sysUser == null){
             return LuckyResult.businessError(ErrorTextEnum.userNotExits.text);
         }
+        //TODO:(密码暂时还没加密)
         if(!password.equals(sysUser.getPassword())){
             return LuckyResult.businessError(ErrorTextEnum.passwordFalse.text);
         }

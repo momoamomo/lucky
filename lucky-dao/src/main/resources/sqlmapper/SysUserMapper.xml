@@ -187,4 +187,24 @@
         </where>
         order by id desc
     </select>
+
+    <select id="selectBySysUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByPhone" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user
+        where user_phone = #{userPhone,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectLastId" resultType="java.lang.String">
+        select user_id
+        from sys_user
+        order by user_id desc limit 1
+    </select>
 </mapper>

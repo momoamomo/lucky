@@ -4,6 +4,7 @@ import com.szl.lucky.dao.entity.SysUser;
 import com.szl.lucky.web.dto.SysUserQueryReqDto;
 import com.szl.lucky.web.dto.SysUserQueryRespDto;
 import com.github.pagehelper.PageInfo;
+import com.szl.lucky.web.dto.SysUserSaveDto;
 
 
 /**
@@ -20,4 +21,11 @@ public interface UserService {
      * @return 用户列表
      */
     PageInfo<SysUserQueryRespDto> getUsers(SysUserQueryReqDto reqDto);
+
+    /**
+     * 保存用户（新增，编辑）
+     *
+     * @param saveDto
+     */
+    void saveUser(SysUserSaveDto saveDto);
 }

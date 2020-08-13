@@ -2,10 +2,9 @@ package com.szl.lucky.web.enums;
 
 /**
  * @author sunzhilin
- * @date 2020/3/30  10:22
+ * @date 2020/8/13  11:11
  */
 public enum ErrorTextEnum {
-
     userNotExits("用户不存在！"),
     wrongPasswordFalse("用户名或密码错误"),
     passwordFalse("密码错误");
