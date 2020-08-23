@@ -37,16 +37,44 @@ public class SysUserManageController {
      * @param sysUserQueryReqDto
      * @return
      */
-    @PostMapping(value ="/page")
-    public LuckyResult querySysUserInfo(SysUserQueryReqDto sysUserQueryReqDto){
+    @PostMapping(value = "/page")
+    public LuckyResult querySysUserInfo(SysUserQueryReqDto sysUserQueryReqDto) {
         PageInfo<SysUserQueryRespDto> users = userService.getUsers(sysUserQueryReqDto);
         return LuckyResult.ok(users);
     }
 
-    @RequestMapping(value="save",method = RequestMethod.POST)
-    public LuckyResult saveSysUser(SysUserSaveDto saveDto){
+    /**
+     * 保存用户（新增，更新）
+     * @param saveDto
+     * @return
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public LuckyResult saveSysUser(SysUserSaveDto saveDto) {
         userService.saveUser(saveDto);
         return LuckyResult.ok();
     }
+
+    /**
+     * 删除用户
+     * @param reqDto
+     * @return
+     */
+    @PostMapping(value = "/delete")
+    public LuckyResult deleteSysUser(SysUserQueryReqDto reqDto) {
+        userService.deleteUser(reqDto);
+        return LuckyResult.ok();
+    }
+
+    /**
+     * 重置密码
+     * @param reqDto
+     * @return
+     */
+    @PostMapping(value = "/reset")
+    public LuckyResult resetPassword(SysUserQueryReqDto reqDto) {
+        userService.resetPassword(reqDto);
+        return LuckyResult.ok();
+    }
+
 
 }

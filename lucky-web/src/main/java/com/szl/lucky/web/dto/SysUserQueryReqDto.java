@@ -16,6 +16,8 @@ public class SysUserQueryReqDto {
 
     private String userName;
 
+    private String password;
+
     private Integer pageNum;
 
     private Integer pageSize;

@@ -52,7 +52,12 @@ public class SysUser {
      */
     private Date mt;
 
-    public SysUser(Long id, String userId, String userPhone, String userName, String password, String role, String sex, Date ct, Date mt) {
+    /**
+     * true即1表示已删除，false即0表示未删除
+     */
+    private Boolean isDeleted;
+
+    public SysUser(Long id, String userId, String userPhone, String userName, String password, String role, String sex, Date ct, Date mt, Boolean isDeleted) {
         this.id = id;
         this.userId = userId;
         this.userPhone = userPhone;
@@ -62,9 +67,10 @@ public class SysUser {
         this.sex = sex;
         this.ct = ct;
         this.mt = mt;
+        this.isDeleted = isDeleted;
     }
 
-    public SysUser(){
+    public SysUser() {
 
     }
 }

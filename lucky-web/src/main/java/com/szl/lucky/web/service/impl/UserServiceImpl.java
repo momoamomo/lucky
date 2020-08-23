@@ -10,6 +10,7 @@ import com.szl.lucky.web.dto.SysUserQueryReqDto;
 import com.szl.lucky.web.dto.SysUserQueryRespDto;
 import com.szl.lucky.web.dto.SysUserSaveDto;
 import com.szl.lucky.web.enums.LuckyWebErrorEnum;
+import com.szl.lucky.web.enums.UserInfoDeleteFlag;
 import com.szl.lucky.web.service.UserService;
 import exception.LuckyException;
 import org.springframework.beans.BeanUtils;
@@ -102,10 +103,48 @@ public class UserServiceImpl implements UserService {
             sysUser.setPassword(saveDto.getPassword());
             Long userId = Long.valueOf(sysUserMapper.selectLastId())+1;
             sysUser.setUserId(userId.toString());
-            sysUserMapper.insert(sysUser);
+            sysUserMapper.insertSelective(sysUser);
             //ToDO：发送短信
         }
 
 
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param reqDto
+     */
+    @Override
+    public void deleteUser(SysUserQueryReqDto reqDto) {
+        BaseChecker.checkNotNull(reqDto.getUserId(),"userId");
+        SysUser sysUser = sysUserMapper.selectBySysUserId(reqDto.getUserId());
+        if(sysUser == null){
+            throw new LuckyException(LuckyWebErrorEnum.userNotExits);
+        }
+        SysUser user = new SysUser();
+        user.setUserId(user.getUserId());
+        user.setIsDeleted(UserInfoDeleteFlag.IS_DELETED.getCode());
+        sysUserMapper.updateByPrimaryKeySelective(user);
+    }
+
+    /**
+     * 用户重置密码
+     *
+     * @param reqDto
+     */
+    @Override
+    public void resetPassword(SysUserQueryReqDto reqDto) {
+        BaseChecker.checkNotNull(reqDto.getUserId(),"userId");
+        BaseChecker.checkNotNull(reqDto.getUserPhone(),"userPhone");
+        BaseChecker.checkNotNull(reqDto.getUserName(),"userName");
+        SysUser sysUser = sysUserMapper.selectBySysUserId(reqDto.getUserId());
+        if(sysUser == null){
+            throw new LuckyException(LuckyWebErrorEnum.userNotExits);
+        }
+        SysUser user = new SysUser();
+        user.setUserId(reqDto.getUserId());
+        user.setPassword(reqDto.getPassword());
+        sysUserMapper.updateByPrimaryKeySelective(user);
     }
 }

@@ -28,4 +28,18 @@ public interface UserService {
      * @param saveDto
      */
     void saveUser(SysUserSaveDto saveDto);
+
+    /**
+     * 删除用户
+     *
+     * @param reqDto
+     */
+    void deleteUser(SysUserQueryReqDto reqDto);
+
+    /**
+     * 用户重置密码
+     *
+     * @param reqDto
+     */
+    void resetPassword(SysUserQueryReqDto reqDto);
 }
