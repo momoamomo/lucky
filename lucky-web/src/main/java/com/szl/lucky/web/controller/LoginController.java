@@ -17,6 +17,8 @@ import java.util.stream.Stream;
 
 
 /**
+ * 登录管理
+ *
  * @author sunzhilin
  * @date 2020/3/25  9:54
  */
@@ -28,16 +30,11 @@ public class LoginController {
     private LoginService loginService;
 
 
-    @PostMapping("/register")
-    public LuckyResult register(@RequestParam("userName") String userName,
-                                @RequestParam("password") String password,
-                                @RequestParam("rePassword") String rePassword){
-        //TODO：具体实现servicer逻辑还没写
-        return LuckyResult.ok();
+    //不做新用户注册设计，直接系统添加管理员，自动生成密码
 
-    }
     /**
      * 用户登录
+     *
      * @param userName
      * @param password
      * @return

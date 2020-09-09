@@ -2,6 +2,8 @@ package com.szl.lucky.dao.mapper;
 
 import com.szl.lucky.dao.entity.Room;
 
+import java.util.List;
+
 public interface RoomMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,7 @@ public interface RoomMapper {
     int updateByPrimaryKeySelective(Room record);
 
     int updateByPrimaryKey(Room record);
+
+
+    List<Room> selectFreeRooms();
 }

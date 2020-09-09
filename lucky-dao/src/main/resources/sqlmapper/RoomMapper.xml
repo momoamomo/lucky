@@ -81,4 +81,9 @@
       room_type_id = #{roomTypeId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+<!--  以上为生成的，以下自己添加-->
+  <select id="selectFreeRooms" resultMap="BaseResultMap">
+    select * from room where room_status = 0
+  </select>
 </mapper>

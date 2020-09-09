@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.szl.lucky.dao.mapper.CheckinInfoMapper">
-  <resultMap id="BaseResultMap" type="com.szl.lucky.dao.entity.CheckinInfo">
-    <constructor>
-      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <arg column="room_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="customer_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="is_vip" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="gender" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="idcard" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="deposit" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="checkin_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.szl.lucky.dao.entity.CheckinInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="room_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="customer_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="is_vip" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="gender" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="idcard" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="deposit" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="checkin_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, room_id, customer_name, is_vip, gender, idcard, phone, deposit, checkin_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from checkin_info
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from checkin_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from checkin_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.szl.lucky.dao.entity.CheckinInfo">
+    <insert id="insert" parameterType="com.szl.lucky.dao.entity.CheckinInfo">
     insert into checkin_info (id, room_id, customer_name, 
       is_vip, gender, idcard, 
       phone, deposit, checkin_time
@@ -37,98 +37,98 @@
       #{phone,jdbcType=VARCHAR}, #{deposit,jdbcType=REAL}, #{checkinTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.szl.lucky.dao.entity.CheckinInfo">
-    insert into checkin_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="roomId != null">
-        room_id,
-      </if>
-      <if test="customerName != null">
-        customer_name,
-      </if>
-      <if test="isVip != null">
-        is_vip,
-      </if>
-      <if test="gender != null">
-        gender,
-      </if>
-      <if test="idcard != null">
-        idcard,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="deposit != null">
-        deposit,
-      </if>
-      <if test="checkinTime != null">
-        checkin_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="roomId != null">
-        #{roomId,jdbcType=VARCHAR},
-      </if>
-      <if test="customerName != null">
-        #{customerName,jdbcType=VARCHAR},
-      </if>
-      <if test="isVip != null">
-        #{isVip,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null">
-        #{gender,jdbcType=VARCHAR},
-      </if>
-      <if test="idcard != null">
-        #{idcard,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="deposit != null">
-        #{deposit,jdbcType=REAL},
-      </if>
-      <if test="checkinTime != null">
-        #{checkinTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.szl.lucky.dao.entity.CheckinInfo">
-    update checkin_info
-    <set>
-      <if test="roomId != null">
-        room_id = #{roomId,jdbcType=VARCHAR},
-      </if>
-      <if test="customerName != null">
-        customer_name = #{customerName,jdbcType=VARCHAR},
-      </if>
-      <if test="isVip != null">
-        is_vip = #{isVip,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null">
-        gender = #{gender,jdbcType=VARCHAR},
-      </if>
-      <if test="idcard != null">
-        idcard = #{idcard,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="deposit != null">
-        deposit = #{deposit,jdbcType=REAL},
-      </if>
-      <if test="checkinTime != null">
-        checkin_time = #{checkinTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.szl.lucky.dao.entity.CheckinInfo">
+    <insert id="insertSelective" parameterType="com.szl.lucky.dao.entity.CheckinInfo">
+        insert into checkin_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="roomId != null">
+                room_id,
+            </if>
+            <if test="customerName != null">
+                customer_name,
+            </if>
+            <if test="isVip != null">
+                is_vip,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="idcard != null">
+                idcard,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="deposit != null">
+                deposit,
+            </if>
+            <if test="checkinTime != null">
+                checkin_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="roomId != null">
+                #{roomId,jdbcType=VARCHAR},
+            </if>
+            <if test="customerName != null">
+                #{customerName,jdbcType=VARCHAR},
+            </if>
+            <if test="isVip != null">
+                #{isVip,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="deposit != null">
+                #{deposit,jdbcType=REAL},
+            </if>
+            <if test="checkinTime != null">
+                #{checkinTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.szl.lucky.dao.entity.CheckinInfo">
+        update checkin_info
+        <set>
+            <if test="roomId != null">
+                room_id = #{roomId,jdbcType=VARCHAR},
+            </if>
+            <if test="customerName != null">
+                customer_name = #{customerName,jdbcType=VARCHAR},
+            </if>
+            <if test="isVip != null">
+                is_vip = #{isVip,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                idcard = #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="deposit != null">
+                deposit = #{deposit,jdbcType=REAL},
+            </if>
+            <if test="checkinTime != null">
+                checkin_time = #{checkinTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.szl.lucky.dao.entity.CheckinInfo">
     update checkin_info
     set room_id = #{roomId,jdbcType=VARCHAR},
       customer_name = #{customerName,jdbcType=VARCHAR},
@@ -140,4 +140,25 @@
       checkin_time = #{checkinTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+    <!--  以上为系统自动生成-->
+    <select id="queryCheckinInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from checkin_info
+        where 1=1
+        <if test="roomId != null">
+            and room_id = #{roomId,jdbcType=VARCHAR}
+        </if>
+        <if test="customerName != null">
+            and customer_name = #{customerName,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null">
+            and create_time <![CDATA[>=]]> #{startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="endTime != null">
+            and create_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        order by checkin_time desc
+    </select>
 </mapper>
